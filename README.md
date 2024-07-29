@@ -1,6 +1,6 @@
 
 # deepspeed-belle-test
-在master裡面
+
 =======
 # 開docker:
 	docker run -it --runtime=nvidia --shm-size="100g"   -v your_path/BELLE/train/dschat_train_v1:/workspace/BELLE-train   -v your_model_path:/root/.cache/huggingface/hub   belleagi/belle:v1.0 /bin/bash
