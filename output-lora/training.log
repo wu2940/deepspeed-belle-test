@@ -1,0 +1,55 @@
+[2024-07-16 05:37:50,811] [WARNING] [runner.py:190:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+[2024-07-16 05:37:50,845] [INFO] [runner.py:540:main] cmd = /opt/conda/bin/python3 -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMF19 --master_addr=127.0.0.1 --master_port=29500 --enable_each_rank_log=None main.py --sft_only_data_path belleMath.json --data_split 10,0,0 --model_name_or_path taide/Llama3-TAIDE-LX-8B-Chat-Alpha1 --use_auth_token --per_device_train_batch_size 2 --per_device_eval_batch_size 1 --max_seq_len 1024 --learning_rate 3e-4 --weight_decay 0. --num_train_epochs 5 --gradient_accumulation_steps 1 --lr_scheduler_type cosine --num_warmup_steps 100 --seed 1234 --gradient_checkpointing --zero_stage 3 --lora_dim 16 --lora_alpha 16 --lora_droppout 0.05 --lora_module_name q_proj,k_proj,v_proj,o_proj,down_proj,gate_proj,up_proj --deepspeed --output_dir output-lora
+[2024-07-16 05:37:52,404] [INFO] [launch.py:222:main] 0 NCCL_VERSION=2.12.12
+[2024-07-16 05:37:52,404] [INFO] [launch.py:229:main] WORLD INFO DICT: {'localhost': [0]}
+[2024-07-16 05:37:52,404] [INFO] [launch.py:235:main] nnodes=1, num_local_procs=1, node_rank=0
+[2024-07-16 05:37:52,404] [INFO] [launch.py:246:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0]})
+[2024-07-16 05:37:52,404] [INFO] [launch.py:247:main] dist_world_size=1
+[2024-07-16 05:37:52,404] [INFO] [launch.py:249:main] Setting CUDA_VISIBLE_DEVICES=0
+transformers.__version__ :  4.29.0.dev0
+[2024-07-16 05:37:54,156] [INFO] [comm.py:586:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+model_name_or_path :  taide/Llama3-TAIDE-LX-8B-Chat-Alpha1
+Making tokenizer padding side to left
+tokenizer.bos_token_id:  1
+tokenizer.eos_token_id:  2
+Downloading shards:   0%|          | 0/4 [00:00<?, ?it/s]
+Downloading (…)of-00004.safetensors:   0%|          | 0.00/4.98G [00:00<?, ?B/s][A
+Downloading (…)of-00004.safetensors:   0%|          | 10.5M/4.98G [00:14<1:51:25, 743kB/s][A
+Downloading (…)of-00004.safetensors:   0%|          | 21.0M/4.98G [00:20<1:13:03, 1.13MB/s][A
+Downloading (…)of-00004.safetensors:   0%|          | 21.0M/4.98G [00:39<1:13:03, 1.13MB/s][A
+Downloading (…)of-00004.safetensors:   1%|          | 31.5M/4.98G [00:39<1:50:13, 748kB/s] [A
+Downloading (…)of-00004.safetensors:   1%|          | 41.9M/4.98G [00:49<1:38:10, 838kB/s][A
+Downloading (…)of-00004.safetensors:   1%|          | 41.9M/4.98G [01:09<1:38:10, 838kB/s][A
+Downloading (…)of-00004.safetensors:   1%|          | 52.4M/4.98G [01:12<2:07:49, 642kB/s][A
+Downloading (…)of-00004.safetensors:   1%|▏         | 62.9M/4.98G [01:20<1:45:22, 777kB/s][A
+Downloading (…)of-00004.safetensors:   1%|▏         | 73.4M/4.98G [01:38<1:55:16, 709kB/s][A
+Downloading (…)of-00004.safetensors:   1%|▏         | 73.4M/4.98G [01:49<1:55:16, 709kB/s][A
+Downloading (…)of-00004.safetensors:   2%|▏         | 83.9M/4.98G [01:55<2:01:03, 674kB/s][A
+Downloading (…)of-00004.safetensors:   2%|▏         | 83.9M/4.98G [02:09<2:01:03, 674kB/s][A
+Downloading (…)of-00004.safetensors:   2%|▏         | 94.4M/4.98G [02:12<2:04:55, 651kB/s][A
+Downloading (…)of-00004.safetensors:   2%|▏         | 94.4M/4.98G [02:29<2:04:55, 651kB/s][A[2024-07-16 05:40:26,372] [INFO] [launch.py:428:sigkill_handler] Killing subprocess 861
+Downloading shards:   0%|          | 0/4 [02:30<?, ?it/s]
+Traceback (most recent call last):
+  File "main.py", line 406, in <module>
+    main()
+  File "main.py", line 235, in main
+    model = AutoModelForCausalLM.from_pretrained(args.model_name_or_path, use_auth_token=args.use_auth_token)
+  File "/opt/conda/lib/python3.8/site-packages/transformers/models/auto/auto_factory.py", line 468, in from_pretrained
+    return model_class.from_pretrained(
+  File "/opt/conda/lib/python3.8/site-packages/transformers/modeling_utils.py", line 2541, in from_pretrained
+[2024-07-16 05:40:26,472] [INFO] [launch.py:428:sigkill_handler] Killing subprocess 861
+Traceback (most recent call last):
+  File "/opt/conda/bin/deepspeed", line 6, in <module>
+    main()
+  File "/opt/conda/lib/python3.8/site-packages/deepspeed/launcher/runner.py", line 555, in main
+    result.wait()
+  File "/opt/conda/lib/python3.8/subprocess.py", line 1083, in wait
+    return self._wait(timeout=timeout)
+  File "/opt/conda/lib/python3.8/subprocess.py", line 1806, in _wait
+    (pid, sts) = self._try_wait(0)
+  File "/opt/conda/lib/python3.8/subprocess.py", line 1764, in _try_wait
+    (pid, sts) = os.waitpid(self.pid, wait_flags)
+  File "/opt/conda/lib/python3.8/site-packages/deepspeed/launcher/runner.py", line 547, in sigkill_handler
+    result_kill = subprocess.Popen(kill_cmd, env=env)
+NameError: free variable 'kill_cmd' referenced before assignment in enclosing scope
+[2024-07-16 05:40:26,645] [INFO] [launch.py:437:sigkill_handler] Main process received SIGTERM, exiting
