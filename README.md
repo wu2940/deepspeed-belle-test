@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # deepspeed-belle-test
 在master裡面
 =======
@@ -28,4 +28,3 @@
 		解決:pip install --upgrade datasets
 	3.
 		解決:pip install --upgrade deepspeed
->>>>>>> b11f0eb (Initial commit)
